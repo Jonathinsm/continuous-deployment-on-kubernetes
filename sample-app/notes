@@ -1,0 +1,19 @@
+#Port Forward
+kubectl port-forward --namespace pruebas $(kubectl get pod --namespace pruebas --selector="app=gceme,role=frontend" --output jsonpath='{.items[0].metadata.name}') 8080:80
+
+#Service type Nodeport
+#This service is the best optión to use Compute Load balancer
+apiVersion: v1
+metadata:
+  name: gceme-frontend
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: gceme
+    role: frontend
+

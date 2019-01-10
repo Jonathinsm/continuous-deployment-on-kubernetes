@@ -1,0 +1,15 @@
+# jsimanca@grupodot.com
+# Este obra está bajo una licencia de
+# Creative Commons Reconocimiento 4.0 Internacional.
+
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: default
+spec:
+  hard:
+    memory: 2Gi
+    cpu: 2
+    pods: 4
+    services: 2
+    resourcequotas: 1

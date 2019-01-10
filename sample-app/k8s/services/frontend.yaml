@@ -1,0 +1,18 @@
+# jsimanca@grupodot.com
+# Este obra está bajo una licencia de
+# Creative Commons Reconocimiento 4.0 Internacional.
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: gceme-frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: gceme
+    role: frontend

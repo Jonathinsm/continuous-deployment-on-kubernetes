@@ -1,0 +1,32 @@
+# jsimanca@grupodot.com
+# Este obra está bajo una licencia de
+# Creative Commons Reconocimiento 4.0 Internacional.
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: gceme-frontend-dev
+spec:
+  replicas:
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: gceme
+        role: frontend
+        env: dev
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/dot-internal-admin-projects/gceme:1.0
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "100m"
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            port: 80
+        ports:
+        - name: frontend
+          containerPort: 80
